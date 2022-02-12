@@ -59,6 +59,20 @@ const App = () => {
             setDataList(res);
         });
     };
+    const limitChange = (event) => {
+        setPagination((prevState) => ({
+            ...prevState,
+            limit: event.target.value,
+        }));
+    };
+
+    const next = () => {
+        fetchDataList(pagination.next);
+    };
+
+    const prev = () => {
+        fetchDataList(pagination.prev);
+    };
 
     const Item = (itemData) => {
         const { data } = itemData;
@@ -100,13 +114,38 @@ const App = () => {
         );
     };
 
+    const PaginationHTML = (data) => {
+        const { page } = data;
+        return (
+            <>
+                <button onClick={prev} className="btn" disabled={!page.prev}>
+                    Prev
+                </button>
+                <select onChange={limitChange}>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+                <button onClick={next} className="btn" disabled={!page.next}>
+                    Next
+                </button>
+            </>
+        );
+    };
+
     return (
         <>
             <div className="container">
+                <div className="paginatonLayout">
+                    <PaginationHTML page={pagination} />
+                </div>
                 <div className="cardLayout">
                     {dataList?.map((item, i) => {
                         return <Item data={item} key={i} />;
                     })}
+                </div>
+                <div className="paginatonLayout">
+                    <PaginationHTML page={pagination} />
                 </div>
             </div>
         </>

@@ -69,6 +69,11 @@ p {
     margin: 0;
     margin-bottom: 1rem;
 }
+a,
+.details {
+    padding: 25px;
+    width: 100%;
+}
 .btn {
     color: #fff;
     background-color: #5b73e8;
@@ -93,4 +98,16 @@ p {
 .cardItem li {
     padding: 0.75rem 1.25rem;
     border-bottom: 1px solid #f5f6f8;
+}
+.paginatonLayout {
+    margin: 1rem;
+}
+.paginatonLayout select,
+.paginatonLayout input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #f5f6f8;
+}
+.paginatonLayout .btn,
+.paginatonLayout select {
+    margin-right: 1rem;
 }
